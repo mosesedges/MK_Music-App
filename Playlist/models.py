@@ -5,9 +5,9 @@ import datetime
 
 
 class Artist(models.Model):
-    user = models.ForeignKey(User, related_name='artists', required=True, verbose_name=_('Artist'), on_delete=models.DO_NOTHING)
-    name = models.CharField(max_length=255, verbose_name=-_('Artist Name'), required=True,)
-    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True, default=datetime.datetime.now)
+    user = models.ForeignKey(User, related_name='artists', verbose_name=_('Artist'), on_delete=models.DO_NOTHING)
+    name = models.CharField(max_length=255, verbose_name=_('Artist Name'))
+    created_at = models.DateTimeField(auto_now_add=True)
     
     
     class Meta:
@@ -29,7 +29,7 @@ class Album(models.Model):
         (5, _('Rap')),
     )
     
-    artist = models.ManyToManyField('Artist', on_delete=models.CASCADE)
+    artist = models.ManyToManyField('Artist')
     title = models.CharField(max_length=225, verbose_name=_('Title'))
     release_date = models.DateField()
     track_no = models.IntegerField(verbose_name=_('Track No'), default=0)
