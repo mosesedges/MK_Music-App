@@ -37,7 +37,7 @@ class Album(models.Model):
     image = models.ImageField(default=None, blank=True)
     
     class Meta:
-        verbose_name_plural = _('Artists')
+        verbose_name_plural = _('Albums')
     
     def __str__(self):
         return self.title
